@@ -19,7 +19,7 @@
 ---
 
 ## 🖼️ Визуализация  
-![ERD](images/erd.png) 
+![ER Diagram](images/ERD.png)
 
 ---
 
