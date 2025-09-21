@@ -30,9 +30,9 @@
     CREATE DATABASE instacart_db;
 ### 2. Импортировать таблицы (в порядке)
    #### 📦 Датасет
-      Полный датасет слишком большой для хранения на GitHub.  
-      Вы можете скачать его отсюда:  
-   [Instacart Market Basket Analysis (Kaggle)](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
+Полный датасет слишком большой для хранения на GitHub.  
+Вы можете скачать его отсюда:  
+[Instacart Market Basket Analysis (Kaggle)](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
    
    #### После скачивания поместите файлы в папку `dataset/`   
    - aisles
