@@ -29,12 +29,18 @@
     sql
     CREATE DATABASE instacart_db;
 ### 2. Импортировать таблицы (в порядке)
- - aisles
- - departments
- - products
- - orders
- - order_products_prior
- - order_products_train
+   #### 📦 Датасет
+      Полный датасет слишком большой для хранения на GitHub.  
+      Вы можете скачать его отсюда:  
+   [Instacart Market Basket Analysis (Kaggle)](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
+   
+   #### После скачивания поместите файлы в папку `dataset/`   
+   - aisles
+   - departments
+   - products
+   - orders
+   - order_products_prior
+   - order_products_train
 
 ### 3. Запустить Python-скрипт для анализа
  #### 1. Создать и активировать окружение:
