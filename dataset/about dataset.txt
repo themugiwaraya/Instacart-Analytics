@@ -1,4 +1,0 @@
-Полный датасет доступен на Kaggle:
-https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis
-
-В репозитории хранятся только примеры (*_sample.csv) для демонстрации структуры.
