@@ -3,36 +3,25 @@ import pandas as pd
 import os
 
 DB_NAME = "instacart_db"
-DB_USER = "postgres"      
-DB_PASS = "0000"          
+DB_USER = "postgres"
+DB_PASS = "0000"
 DB_HOST = "localhost"
 DB_PORT = "5432"
 
-QUERIES = {
-    "top_products": """
-        SELECT p.product_name, COUNT(*) AS total_orders
-        FROM order_products_prior opp
-        JOIN products p ON opp.product_id = p.product_id
-        GROUP BY p.product_name
-        ORDER BY total_orders DESC
-        LIMIT 10;
-    """,
-    "orders_by_dow": """
-        SELECT order_dow, COUNT(*) AS total_orders
-        FROM orders
-        GROUP BY order_dow
-        ORDER BY order_dow;
-    """,
-    "reorder_rate": """
-        SELECT reordered, COUNT(*) AS cnt
-        FROM order_products_prior
-        GROUP BY reordered;
-    """
-}
+def load_queries(sql_file="queries.sql"):
+    queries = {}
+    with open(sql_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    raw_queries = [q.strip() for q in content.split(";") if q.strip()]
+    for i, query in enumerate(raw_queries, start=1):
+        queries[f"query_{i}"] = query
+    return queries
 
 def run_queries():
     try:
-        os.makedirs("output", exist_ok=True)
+        output_dir = os.path.join(os.getcwd(), "output")
+        os.makedirs(output_dir, exist_ok=True)
 
         conn = psycopg2.connect(
             dbname=DB_NAME,
@@ -41,19 +30,30 @@ def run_queries():
             host=DB_HOST,
             port=DB_PORT
         )
-        print("✅ Успешное подключение к базе данных")
+        print("Успешное подключение к базе данных")
 
-        for name, query in QUERIES.items():
-            print(f"\n🔹 Результат: {name}")
-            df = pd.read_sql(query, conn)
-            print(df.head())
-            df.to_csv(f"output/{name}.csv", index=False, encoding="utf-8")
-            print(f"💾 Сохранено в output/{name}.csv")
+        queries = load_queries("queries.sql")
+        print("Загруженные запросы:", list(queries.keys()))
+
+        for name, query in queries.items():
+            try:
+                print(f"\n🔹 Выполняется запрос: {name}")
+                df = pd.read_sql(query, conn)
+                print(df.head())
+
+                file_path = os.path.join(output_dir, f"{name}.csv")
+                df.to_csv(file_path, index=False, encoding="utf-8")
+
+                print(f"Сохранено: {file_path} | Строк: {len(df)}")
+
+            except Exception as qe:
+                print(f"Ошибка в запросе '{name}':", qe)
 
         conn.close()
+        print("\nВсе запросы выполнены")
 
     except Exception as e:
-        print("❌ Ошибка подключения или выполнения запроса:", e)
+        print("Ошибка подключения или выполнения:", e)
 
 if __name__ == "__main__":
     run_queries()
