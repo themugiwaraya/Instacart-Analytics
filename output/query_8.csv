@@ -1,11 +1,11 @@
-aisle,total_orders
-fresh fruits,3642188
-fresh vegetables,3418021
-packaged vegetables fruits,1765313
-yogurt,1452343
-packaged cheese,979763
-milk,891015
-water seltzer sparkling water,841533
-chips pretzels,722470
-soy lactosefree,638253
-bread,584834
+product_name,reorder_rate
+Raw Veggie Wrappers,94.12
+Serenity Ultimate Extrema Overnight Pads,93.1
+Chocolate Love Bar,92.08
+Maca Buttercups,90.0
+Sparking Water,90.0
+Bars Peanut Butter,89.55
+Soy Crisps Lightly Salted,89.39
+Benchbreak Chardonnay,89.19
+Organic Blueberry B Mega,88.54
+Beer Can,88.46
