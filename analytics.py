@@ -132,13 +132,47 @@ GRAPH_MAP = {
     "query_10": {"type": "scatter", "title": "Продукты, которые чаще всего заказывают вместе", "xlabel": "Продукт 1 (индекс)", "ylabel": "Частота совместных заказов"}
 }
 
-def plot_pie(df, title):
+def plot_pie(df, title, threshold=2.5):
+    """
+    Построение круговой диаграммы с объединением мелких категорий в 'Другие'.
+    df: DataFrame с 2 колонками (label, value)
+    title: Заголовок графика
+    threshold: минимальный процент, ниже которого категории объединяются
+    """
+    total = df.iloc[:, 1].sum()
+    df["pct"] = df.iloc[:, 1] / total * 100
+
+    large = df[df["pct"] >= threshold]
+    small = df[df["pct"] < threshold]
+
+    if not small.empty:
+        other_row = pd.DataFrame({
+            df.columns[0]: ["Другие"],
+            df.columns[1]: [small.iloc[:, 1].sum()],
+            "pct": [small["pct"].sum()]
+        })
+        df_plot = pd.concat([large, other_row], ignore_index=True)
+    else:
+        df_plot = df.copy()
+
     fig, ax = plt.subplots(figsize=(8, 8))
-    wedges, _, _ = ax.pie(
-        df.iloc[:, 1], labels=None, autopct='%1.1f%%',
-        startangle=140, pctdistance=0.8, textprops={'fontsize': 10}
+    wedges, texts, autotexts = ax.pie(
+        df_plot.iloc[:, 1],
+        labels=None,
+        autopct='%1.1f%%',
+        startangle=140,
+        pctdistance=0.8,
+        textprops={'fontsize': 10}
     )
-    ax.legend(wedges, df.iloc[:, 0], title="Категории", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+
+    ax.legend(
+        wedges, df_plot.iloc[:, 0],
+        title="Категории",
+        loc="center left",
+        bbox_to_anchor=(1, 0, 0.5, 1),
+        fontsize=10
+    )
+
     plt.title(title, fontsize=14)
     return plt
 
