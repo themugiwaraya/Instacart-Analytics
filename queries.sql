@@ -43,13 +43,10 @@ GROUP BY o.order_hour_of_day
 ORDER BY o.order_hour_of_day;
 
 
--- 6. Распределение числа товаров в заказах Pie chart
-SELECT t.product_count
-FROM (
-    SELECT order_id, COUNT(*) AS product_count
-    FROM order_products_prior
-    GROUP BY order_id
-) t;
+-- 6. Распределение числа товаров в заказах Histogram
+SELECT order_id, COUNT(*) AS product_count
+FROM order_products_prior
+GROUP BY order_id;
 
 
 -- 7. Повторные vs новые заказы Pie chart

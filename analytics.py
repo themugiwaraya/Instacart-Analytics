@@ -188,9 +188,37 @@ def plot_line(df, meta):
     df.plot(kind="line", x=df.columns[0], y=df.columns[1], marker="o")
     plt.xlabel(meta["xlabel"]); plt.ylabel(meta["ylabel"]); plt.title(meta["title"])
 
-def plot_hist(df, meta):
-    df.plot(kind="hist", bins=20, legend=False)
-    plt.xlabel(meta["xlabel"]); plt.ylabel(meta["ylabel"]); plt.title(meta["title"])
+def plot_hist(df, meta, bins=20, cap_percentile=0.99):
+    """
+    Рисует гистограмму по колонке 'product_count' (или по первому подходящему числовому столбцу).
+    По умолчанию обрезает верхние 1% значений для читаемости (cap_percentile).
+    """
+    # выбрать колонку
+    if "product_count" in df.columns:
+        col = "product_count"
+    else:
+        num_cols = df.select_dtypes(include=["number"]).columns.tolist()
+        # попробуем исключить order_id/user_id, если они есть
+        candidates = [c for c in num_cols if c not in ("order_id", "user_id")]
+        col = candidates[0] if candidates else (num_cols[0] if num_cols else None)
+
+    if col is None:
+        print("⚠️ Нет числовых колонок для гистограммы.")
+        return
+
+    # обрезаем экстремумы для наглядности
+    cap = df[col].quantile(cap_percentile)
+    data = df[df[col] <= cap][col]
+
+    plt.figure(figsize=(10, 6))
+    plt.hist(data, bins=bins)
+    plt.xlabel(meta.get("xlabel", col))
+    plt.ylabel(meta.get("ylabel", "Частота"))
+    plt.title(meta.get("title", f"Гистограмма по {col}"))
+    plt.axvline(data.median(), color="k", linestyle="--", label=f"median={data.median():.0f}")
+    plt.legend()
+    return plt
+
 
 def plot_scatter(df, meta):
     df = df.head(20).reset_index()
