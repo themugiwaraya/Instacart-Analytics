@@ -221,10 +221,21 @@ def plot_hist(df, meta, bins=20, cap_percentile=0.99):
 
 
 def plot_scatter(df, meta):
-    df = df.head(20).reset_index()
-    plt.scatter(df.index, df[df.columns[2]], s=100, alpha=0.7, c="blue")
-    plt.xticks(df.index, df[df.columns[0]], rotation=90)
-    plt.ylabel(meta["ylabel"]); plt.title(meta["title"])
+    # берем топ-20 записей
+    df = df.head(20).reset_index(drop=True)
+
+    # продукт 1 и продукт 2 можно склеить в подпись
+    df["pair"] = df[df.columns[0]] + " + " + df[df.columns[1]]
+
+    plt.figure(figsize=(12, 6))
+    plt.scatter(df["pair"], df[df.columns[2]], s=100, alpha=0.7, c="blue")
+
+    plt.xticks(rotation=90, fontsize=9)
+    plt.ylabel(meta["ylabel"])
+    plt.title(meta["title"])
+    plt.tight_layout()
+    return plt
+
 
 def run_analytics():
     conn = psycopg2.connect(**DB_CONFIG)
