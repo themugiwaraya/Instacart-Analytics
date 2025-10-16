@@ -1,0 +1,14 @@
+database_name: Instacart DB
+sqlalchemy_uri: postgresql+psycopg2://postgres:XXXXXXXXXX@host.docker.internal:5432/instacart_db
+cache_timeout: null
+expose_in_sqllab: true
+allow_run_async: false
+allow_ctas: false
+allow_cvas: false
+allow_dml: true
+allow_file_upload: true
+extra:
+  allows_virtual_table_explore: true
+impersonate_user: false
+uuid: bf77b44e-1c15-469d-8d56-861e70d2247e
+version: 1.0.0

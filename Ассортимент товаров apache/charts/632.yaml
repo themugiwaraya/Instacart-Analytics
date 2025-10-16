@@ -1,0 +1,70 @@
+slice_name: "\u041D\u0430\u0438\u0431\u043E\u043B\u0435\u0435 \u043F\u043E\u043F\u0443\
+  \u043B\u044F\u0440\u043D\u044B\u0435 \u0442\u043E\u0432\u0430\u0440\u044B"
+description: null
+certified_by: null
+certification_details: null
+viz_type: word_cloud
+params:
+  datasource: 56__table
+  viz_type: word_cloud
+  matrixify_show_column_headers: true
+  matrixify_mode_columns: metrics
+  matrixify_dimension_selection_mode_columns: members
+  matrixify_dimension_columns:
+    dimension: ''
+    values: []
+  matrixify_topn_value_columns: 10
+  matrixify_topn_order_columns: desc
+  matrixify_show_row_labels: true
+  matrixify_mode_rows: metrics
+  matrixify_dimension_selection_mode_rows: members
+  matrixify_dimension_rows:
+    dimension: ''
+    values: []
+  matrixify_topn_value_rows: 10
+  matrixify_topn_order_rows: desc
+  matrixify_row_height: 300
+  matrixify_fit_columns_dynamically: true
+  matrixify_charts_per_row: 4
+  series: word
+  metric:
+    expressionType: SIMPLE
+    column:
+      advanced_data_type: null
+      certification_details: null
+      certified_by: null
+      column_name: frequency
+      description: null
+      expression: null
+      filterable: true
+      groupby: true
+      id: 863
+      is_certified: false
+      is_dttm: false
+      python_date_format: null
+      type: column
+      type_generic: 0
+      uuid: a38eee60-f9eb-4044-b8f6-aa0ca6fddcda
+      verbose_name: null
+      warning_markdown: null
+    aggregate: SUM
+    sqlExpression: null
+    datasourceWarning: false
+    hasCustomLabel: false
+    label: SUM(frequency)
+    optionName: metric_68kqfscowk4_krflp9q4b8h
+  adhoc_filters: []
+  row_limit: 100
+  sort_by_metric: false
+  size_from: 10
+  size_to: 70
+  rotation: square
+  color_scheme: d3Category10
+  extra_form_data: {}
+  dashboards:
+  - 17
+query_context: '{"datasource":{"id":56,"type":"table"},"force":false,"queries":[{"filters":[],"extras":{"having":"","where":""},"applied_time_extras":{},"columns":["word"],"metrics":[{"expressionType":"SIMPLE","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"frequency","description":null,"expression":null,"filterable":true,"groupby":true,"id":863,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"column","type_generic":0,"uuid":"a38eee60-f9eb-4044-b8f6-aa0ca6fddcda","verbose_name":null,"warning_markdown":null},"aggregate":"SUM","sqlExpression":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"SUM(frequency)","optionName":"metric_68kqfscowk4_krflp9q4b8h"}],"annotation_layers":[],"row_limit":100,"series_limit":0,"group_others_when_limit_reached":false,"order_desc":true,"url_params":{},"custom_params":{},"custom_form_data":{}}],"form_data":{"datasource":"56__table","viz_type":"word_cloud","matrixify_show_column_headers":true,"matrixify_mode_columns":"metrics","matrixify_dimension_selection_mode_columns":"members","matrixify_dimension_columns":{"dimension":"","values":[]},"matrixify_topn_value_columns":10,"matrixify_topn_order_columns":"desc","matrixify_show_row_labels":true,"matrixify_mode_rows":"metrics","matrixify_dimension_selection_mode_rows":"members","matrixify_dimension_rows":{"dimension":"","values":[]},"matrixify_topn_value_rows":10,"matrixify_topn_order_rows":"desc","matrixify_row_height":300,"matrixify_fit_columns_dynamically":true,"matrixify_charts_per_row":4,"series":"word","metric":{"expressionType":"SIMPLE","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"frequency","description":null,"expression":null,"filterable":true,"groupby":true,"id":863,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"column","type_generic":0,"uuid":"a38eee60-f9eb-4044-b8f6-aa0ca6fddcda","verbose_name":null,"warning_markdown":null},"aggregate":"SUM","sqlExpression":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"SUM(frequency)","optionName":"metric_68kqfscowk4_krflp9q4b8h"},"adhoc_filters":[],"row_limit":100,"sort_by_metric":false,"size_from":10,"size_to":70,"rotation":"square","color_scheme":"d3Category10","extra_form_data":{},"dashboards":[17],"force":false,"result_format":"json","result_type":"full"},"result_format":"json","result_type":"full"}'
+cache_timeout: null
+uuid: 618cd099-b115-4839-b2ae-107a9b472059
+version: 1.0.0
+dataset_uuid: e8bbc276-1b56-4113-a571-d3de39366d35

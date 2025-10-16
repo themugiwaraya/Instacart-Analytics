@@ -1,0 +1,57 @@
+table_name: orders_by_hour
+main_dttm_col: null
+description: null
+default_endpoint: null
+offset: 0
+cache_timeout: null
+catalog: instacart_db
+schema: public
+sql: "SELECT o.order_hour_of_day, COUNT(*) AS total_orders\r\nFROM order_products_prior\
+  \ opp\r\nJOIN orders o ON opp.order_id = o.order_id\r\nGROUP BY o.order_hour_of_day\r\
+  \nORDER BY o.order_hour_of_day;\r\n"
+params: null
+template_params: null
+filter_select_enabled: true
+fetch_values_predicate: null
+extra: null
+normalize_columns: false
+always_filter_main_dttm: false
+folders: null
+uuid: 59523ea4-feb6-4393-b03f-987f626d11da
+metrics:
+- metric_name: count
+  verbose_name: COUNT(*)
+  metric_type: count
+  expression: COUNT(*)
+  description: null
+  d3format: null
+  currency: null
+  extra: null
+  warning_text: null
+columns:
+- column_name: total_orders
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: LONGINTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: null
+- column_name: order_hour_of_day
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: INTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: null
+version: 1.0.0
+database_uuid: bf77b44e-1c15-469d-8d56-861e70d2247e

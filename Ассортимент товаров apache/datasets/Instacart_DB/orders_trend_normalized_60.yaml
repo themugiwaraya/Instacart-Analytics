@@ -1,0 +1,70 @@
+table_name: orders_trend_normalized
+main_dttm_col: null
+description: null
+default_endpoint: null
+offset: 0
+cache_timeout: null
+catalog: instacart_db
+schema: public
+sql: "WITH stats AS (\r\n    SELECT \r\n        MIN(total_orders) AS min_val,\r\n\
+  \        MAX(total_orders) AS max_val\r\n    FROM orders_trend_db\r\n)\r\nSELECT\
+  \ \r\n    o.*,\r\n    (o.total_orders - s.min_val) / (s.max_val - s.min_val) AS\
+  \ normalized_orders\r\nFROM orders_trend_db o\r\nCROSS JOIN stats s;\r\n"
+params: null
+template_params: null
+filter_select_enabled: true
+fetch_values_predicate: null
+extra: null
+normalize_columns: false
+always_filter_main_dttm: false
+folders: null
+uuid: 4603df15-5eb1-4560-a1cf-10c54e905386
+metrics:
+- metric_name: count
+  verbose_name: COUNT(*)
+  metric_type: count
+  expression: COUNT(*)
+  description: null
+  d3format: null
+  currency: null
+  extra: null
+  warning_text: null
+columns:
+- column_name: normalized_orders
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: LONGINTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: null
+- column_name: total_orders
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: LONGINTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: null
+- column_name: order_dow
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: LONGINTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: null
+version: 1.0.0
+database_uuid: bf77b44e-1c15-469d-8d56-861e70d2247e

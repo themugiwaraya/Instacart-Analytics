@@ -1,0 +1,91 @@
+slice_name: "\u0422\u041E\u041F-5 \u043F\u043E\u043B\u043E\u043A \u043F\u043E \u0447\
+  \u0438\u0441\u043B\u0443 \u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0445\
+  \ \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432"
+description: null
+certified_by: null
+certification_details: null
+viz_type: table
+params:
+  datasource: 40__table
+  viz_type: table
+  matrixify_show_column_headers: true
+  matrixify_mode_columns: metrics
+  matrixify_dimension_selection_mode_columns: members
+  matrixify_dimension_columns:
+    dimension: ''
+    values: []
+  matrixify_topn_value_columns: 10
+  matrixify_topn_order_columns: desc
+  matrixify_show_row_labels: true
+  matrixify_mode_rows: metrics
+  matrixify_dimension_selection_mode_rows: members
+  matrixify_dimension_rows:
+    dimension: ''
+    values: []
+  matrixify_topn_value_rows: 10
+  matrixify_topn_order_rows: desc
+  matrixify_row_height: 300
+  matrixify_fit_columns_dynamically: true
+  matrixify_charts_per_row: 3
+  query_mode: aggregate
+  groupby:
+  - aisle
+  time_grain_sqla: P1D
+  temporal_columns_lookup: {}
+  metrics:
+  - expressionType: SIMPLE
+    column:
+      advanced_data_type: null
+      certification_details: null
+      certified_by: null
+      column_name: products_count
+      description: null
+      expression: null
+      filterable: true
+      groupby: true
+      id: 818
+      is_certified: false
+      is_dttm: false
+      python_date_format: null
+      type: LONGINTEGER
+      type_generic: 0
+      uuid: c3abf562-f989-4056-89ce-5a751f6b282c
+      verbose_name: null
+      warning_markdown: null
+    aggregate: SUM
+    sqlExpression: null
+    datasourceWarning: false
+    hasCustomLabel: false
+    label: SUM(products_count)
+    optionName: metric_xaw6o3my0vm_zup5kxaqbpb
+  all_columns: []
+  percent_metrics: []
+  adhoc_filters: []
+  order_by_cols: []
+  order_desc: true
+  server_pagination: false
+  server_page_length: 10
+  row_limit: 10000
+  percent_metric_calculation: row_limit
+  table_timestamp_format: smart_date
+  page_length: null
+  include_search: true
+  allow_rearrange_columns: false
+  allow_render_html: true
+  column_config:
+    aisle:
+      horizontalAlign: left
+      truncateLongCells: false
+  show_cell_bars: true
+  align_pn: false
+  color_pn: true
+  comparison_color_scheme: Green
+  conditional_formatting: []
+  comparison_type: values
+  extra_form_data: {}
+  dashboards: []
+query_context: '{"datasource":{"id":40,"type":"table"},"force":false,"queries":[{"filters":[],"extras":{"time_grain_sqla":"P1D","having":"","where":""},"applied_time_extras":{},"columns":["aisle"],"metrics":[{"expressionType":"SIMPLE","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"products_count","description":null,"expression":null,"filterable":true,"groupby":true,"id":818,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"LONGINTEGER","type_generic":0,"uuid":"c3abf562-f989-4056-89ce-5a751f6b282c","verbose_name":null,"warning_markdown":null},"aggregate":"SUM","sqlExpression":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"SUM(products_count)","optionName":"metric_xaw6o3my0vm_zup5kxaqbpb"}],"orderby":[[{"expressionType":"SIMPLE","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"products_count","description":null,"expression":null,"filterable":true,"groupby":true,"id":818,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"LONGINTEGER","type_generic":0,"uuid":"c3abf562-f989-4056-89ce-5a751f6b282c","verbose_name":null,"warning_markdown":null},"aggregate":"SUM","sqlExpression":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"SUM(products_count)","optionName":"metric_xaw6o3my0vm_zup5kxaqbpb"},false]],"annotation_layers":[],"row_limit":10000,"series_limit":0,"group_others_when_limit_reached":false,"order_desc":true,"url_params":{},"custom_params":{},"custom_form_data":{},"post_processing":[],"time_offsets":[]}],"form_data":{"datasource":"40__table","viz_type":"table","matrixify_show_column_headers":true,"matrixify_mode_columns":"metrics","matrixify_dimension_selection_mode_columns":"members","matrixify_dimension_columns":{"dimension":"","values":[]},"matrixify_topn_value_columns":10,"matrixify_topn_order_columns":"desc","matrixify_show_row_labels":true,"matrixify_mode_rows":"metrics","matrixify_dimension_selection_mode_rows":"members","matrixify_dimension_rows":{"dimension":"","values":[]},"matrixify_topn_value_rows":10,"matrixify_topn_order_rows":"desc","matrixify_row_height":300,"matrixify_fit_columns_dynamically":true,"matrixify_charts_per_row":3,"query_mode":"aggregate","groupby":["aisle"],"time_grain_sqla":"P1D","temporal_columns_lookup":{},"metrics":[{"expressionType":"SIMPLE","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"products_count","description":null,"expression":null,"filterable":true,"groupby":true,"id":818,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"LONGINTEGER","type_generic":0,"uuid":"c3abf562-f989-4056-89ce-5a751f6b282c","verbose_name":null,"warning_markdown":null},"aggregate":"SUM","sqlExpression":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"SUM(products_count)","optionName":"metric_xaw6o3my0vm_zup5kxaqbpb"}],"all_columns":[],"percent_metrics":[],"adhoc_filters":[],"order_by_cols":[],"order_desc":true,"server_pagination":false,"server_page_length":10,"row_limit":10000,"percent_metric_calculation":"row_limit","table_timestamp_format":"smart_date","page_length":null,"include_search":true,"allow_rearrange_columns":false,"allow_render_html":true,"column_config":{"aisle":{"horizontalAlign":"left","truncateLongCells":false}},"show_cell_bars":true,"align_pn":false,"color_pn":true,"comparison_color_scheme":"Green","conditional_formatting":[],"comparison_type":"values","extra_form_data":{},"dashboards":[],"force":false,"result_format":"json","result_type":"full"},"result_format":"json","result_type":"full"}'
+cache_timeout: null
+uuid: 22ab50f4-dd70-4c12-a669-0c2b3da3a8a7
+version: 1.0.0
+dataset_uuid: 3d54251c-d39d-4955-af9a-6e36495b2fec

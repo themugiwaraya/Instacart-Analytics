@@ -1,0 +1,147 @@
+table_name: orders_trend_combined
+main_dttm_col: null
+description: null
+default_endpoint: null
+offset: 0
+cache_timeout: null
+catalog: instacart_db
+schema: public
+sql: "SELECT \r\n    order_dow,\r\n    SUM(total_orders) AS total_orders,\r\n    'Database'\
+  \ AS source\r\nFROM public.orders_trend_db\r\nGROUP BY order_dow\r\n\r\nUNION ALL\r\
+  \n\r\nSELECT \r\n    order_dow,\r\n    SUM(total_orders) AS total_orders,\r\n  \
+  \  'CSV' AS source\r\nFROM public.orders_trend_csv\r\nGROUP BY order_dow;\r\n"
+params: null
+template_params: null
+filter_select_enabled: true
+fetch_values_predicate: null
+extra: null
+normalize_columns: false
+always_filter_main_dttm: false
+folders: null
+uuid: 10719306-5fa1-45ee-8b8e-93963a7780a2
+metrics:
+- metric_name: percent_growth_database_vs_csv
+  verbose_name: Percent Growth Database vs CSV
+  metric_type: null
+  expression: (SUM(CASE WHEN source='Database' THEN total_orders END) - SUM(CASE WHEN
+    source='CSV' THEN total_orders END)) / SUM(CASE WHEN source='CSV' THEN total_orders
+    END) * 100
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+- metric_name: mean_minus_median_total_orders
+  verbose_name: Mean minus Median Total Orders
+  metric_type: null
+  expression: AVG(total_orders) - PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_orders)
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+- metric_name: median_total_orders
+  verbose_name: Median Total Orders
+  metric_type: null
+  expression: PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_orders)
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+- metric_name: avg_total_orders
+  verbose_name: Average Total Orders
+  metric_type: null
+  expression: AVG(total_orders)
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+- metric_name: max_total_orders
+  verbose_name: Max Total Orders
+  metric_type: null
+  expression: MAX(total_orders)
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+- metric_name: min_total_orders
+  verbose_name: Min Total Orders
+  metric_type: null
+  expression: MIN(total_orders)
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+- metric_name: count
+  verbose_name: COUNT(*)
+  metric_type: count
+  expression: COUNT(*)
+  description: null
+  d3format: null
+  currency: null
+  extra:
+    warning_markdown: ''
+  warning_text: null
+columns:
+- column_name: normalized_total_orders
+  verbose_name: normalized_total_orders
+  is_dttm: false
+  is_active: true
+  type: NUMERIC
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: "(total_orders - (SELECT MIN(total_orders) FROM your_dataset_name))\r\
+    \n/\r\n((SELECT MAX(total_orders) FROM your_dataset_name) - (SELECT MIN(total_orders)\
+    \ FROM your_dataset_name))\r\n"
+  description: null
+  python_date_format: null
+  extra: {}
+- column_name: total_orders
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: DECIMAL
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: {}
+- column_name: order_dow
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: LONGINTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: {}
+- column_name: source
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: STRING
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  extra: {}
+version: 1.0.0
+database_uuid: bf77b44e-1c15-469d-8d56-861e70d2247e
